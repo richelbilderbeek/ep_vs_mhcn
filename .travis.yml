@@ -1,5 +1,12 @@
 language: r
 dist: bionic
+cache: packages
+
+r_github_packages:
+  - jtextor/epitope-prediction
+  - richelbilderbeek/mhcnuggetsr
 
 after_script:
+  - Rscript -e "mhcnuggetsr::install_mhcnuggets()"
   - make
+

@@ -21,7 +21,9 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
     dplyr,
+    EpitopePrediction,
     knitr,
+    mhcnuggetsr
 Suggests: 
     knitr,
     stringr,
