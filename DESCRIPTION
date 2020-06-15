@@ -25,7 +25,8 @@ Imports:
     knitr,
     ggplot2,
     mhcnuggetsr,
-    readr
+    readr,
+    tidyr
 Suggests: 
     testthat
 
