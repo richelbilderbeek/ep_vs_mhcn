@@ -12,6 +12,10 @@ n_aas <- 9
 # 100: 30 mins
 n_peptides <- 200 # Tested per haplotype
 
+if (is_on_ci()) {
+  n_peptides <- 2
+}
+
 # A tidy tibble
 df <- tibble::as_tibble(
   expand.grid(

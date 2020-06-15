@@ -5,8 +5,11 @@ cache: packages
 r_github_packages:
   - jtextor/epitope-prediction
   - richelbilderbeek/mhcnuggetsr
+  - richelbilderbeek/bbbq
 
 after_script:
   - Rscript -e "mhcnuggetsr::install_mhcnuggets()"
+  - make clean
+  - make data
   - make
 
