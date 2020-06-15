@@ -16,4 +16,4 @@ The relative bindings strengths, however, should match:
 
 ![](ep_vs_mhcn_perc.png)
 
-
+![](ep_vs_mhcn_perc_spreadsheet.png)
