@@ -24,6 +24,7 @@ Imports:
     EpitopePrediction,
     knitr,
     ggplot2,
-    mhcnuggetsr,
+    mhcnuggetsr
+Suggests: 
     testthat
 
