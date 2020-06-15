@@ -9,8 +9,11 @@ r_github_packages:
   - richelbilderbeek/bbbq
 
 
-after_script:
+before_script:
+  - sudo apt install python3-pip
   - Rscript -e "mhcnuggetsr::install_mhcnuggets()"
+
+after_script:
   - make clean
   - make data
   - make
