@@ -24,7 +24,7 @@ Imports:
     EpitopePrediction,
     knitr,
     ggplot2,
-    mhcnuggetsr,
+    mhcnuggetsr (>= 0.11),
     readr,
     tidyr
 Suggests: 
