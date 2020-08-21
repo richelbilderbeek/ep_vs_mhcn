@@ -3,15 +3,17 @@ language: r
 cache: packages
 
 r_github_packages:
+  - richelbilderbeek/pureseqtmr
   - jtextor/epitope-prediction
+  - richelbilderbeek/epiprepreds
+  - richelbilderbeek/netmhc2pan
   - richelbilderbeek/mhcnuggetsr
   - richelbilderbeek/mhcnpreds
-  - richelbilderbeek/pureseqtmr
+  - richelbilderbeek/nmhc2ppreds
   - richelbilderbeek/bbbq
 
 
 before_script:
-  - sudo apt install python3-pip
   - Rscript -e "mhcnuggetsr::install_mhcnuggets()"
 
 after_script:
