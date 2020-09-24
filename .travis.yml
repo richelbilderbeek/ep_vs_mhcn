@@ -11,6 +11,9 @@ r_github_packages:
   - richelbilderbeek/nmhc2ppreds
   - richelbilderbeek/bbbq
 
+bioc_packages:
+  - msa
+
 
 before_script:
   - Rscript -e "mhcnuggetsr::install_mhcnuggets()"
@@ -22,9 +25,9 @@ after_script:
 
 after_failure:
   # Download thesis
-  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
+  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
 
 after_success:
   # Download thesis
-  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
+  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
 
