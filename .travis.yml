@@ -2,6 +2,7 @@ language: r
 cache: packages
 
 r_github_packages:
+  - richelbilderbeek/tmhmm
   - richelbilderbeek/pureseqtmr
   - jtextor/epitope-prediction
   - richelbilderbeek/epiprepreds
@@ -13,7 +14,6 @@ r_github_packages:
 
 bioc_packages:
   - msa
-
 
 before_script:
   - Rscript -e "mhcnuggetsr::install_mhcnuggets()"
