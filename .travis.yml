@@ -1,6 +1,10 @@
 language: r
 cache: packages
 
+r_packages:
+  - devtools
+  - rgl
+
 r_github_packages:
   - richelbilderbeek/tmhmm
   - richelbilderbeek/pureseqtmr
