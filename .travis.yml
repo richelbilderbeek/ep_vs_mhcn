@@ -17,6 +17,8 @@ bioc_packages:
 
 before_script:
   - Rscript -e "mhcnuggetsr::install_mhcnuggets()"
+  # Fix: installation of package 'rgl' had non-zero exit status
+  - sudo apt-get install libglu1-mesa-dev
 
 after_script:
   - make clean
