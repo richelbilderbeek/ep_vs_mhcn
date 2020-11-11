@@ -11,7 +11,6 @@ r_github_packages:
   - jtextor/epitope-prediction
   - richelbilderbeek/epiprepreds
   - richelbilderbeek/netmhc2pan
-  - richelbilderbeek/mhcnuggetsr
   - richelbilderbeek/mhcnpreds
   - richelbilderbeek/nmhc2ppreds
   - richelbilderbeek/bbbq
