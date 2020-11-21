@@ -6,11 +6,8 @@ r_packages:
   - rgl
 
 r_github_packages:
-  - richelbilderbeek/tmhmm
-  - richelbilderbeek/pureseqtmr
   - jtextor/epitope-prediction
   - richelbilderbeek/epiprepreds
-  - richelbilderbeek/netmhc2pan
   - richelbilderbeek/mhcnpreds
   - richelbilderbeek/nmhc2ppreds
   - richelbilderbeek/bbbq
