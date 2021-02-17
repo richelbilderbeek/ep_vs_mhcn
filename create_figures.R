@@ -21,11 +21,11 @@ df_scatter <- tidyr::pivot_wider(
   values_from = ic50
 )
 
-ggplot(df_scatter, aes(x = ep, y = mhcn, color = haplotype)) +
+ggplot(df_scatter, aes(x = EpitopePrediction, y = mhcnuggetsr, color = haplotype)) +
   geom_abline(slope = 1, intercept = 0, lty = "dashed") +
   geom_point() +
-  scale_y_continuous(limits = c(0, max(df_scatter$mhcn))) +
-  scale_x_continuous(limits = c(0, max(df_scatter$mhcn))) +
+  scale_y_continuous(limits = c(0, max(df_scatter$mhcnuggetsr))) +
+  scale_x_continuous(limits = c(0, max(df_scatter$mhcnuggetsr))) +
   geom_smooth(method = "lm", alpha = 0.1) +
   xlab("IC50 predicted by EpitopePrediction") +
   ylab("IC50 predicted by MHCnuggets") +
@@ -37,7 +37,7 @@ ggplot(df_scatter, aes(x = ep, y = mhcn, color = haplotype)) +
   ) + ggsave("ep_vs_mhcn.png", width = 7, height = 7)
 
 
-ggplot(df_scatter, aes(x = ep, y = mhcn, color = haplotype)) +
+ggplot(df_scatter, aes(x = EpitopePrediction, y = mhcnuggetsr, color = haplotype)) +
   geom_abline(slope = 1, intercept = 0, lty = "dashed") +
   geom_point() +
   scale_y_log10(limits = c(min(df$ic50), max(df$ic50))) +
@@ -59,11 +59,11 @@ df_perc <- df %>%
 
 # Scales are fine
 ggplot(
-  data = df_perc %>% filter(tool == "ep"),
+  data = df_perc %>% filter(tool == "EpitopePrediction"),
   aes(x = ic50, y = perc)
 ) + geom_point() + facet_grid(. ~ haplotype, scales = "free")
 ggplot(
-  data = df_perc %>% filter(tool == "mhcn"),
+  data = df_perc %>% filter(tool == "mhcnuggetsr"),
   aes(x = ic50, y = perc)
 ) + geom_point() + facet_grid(. ~ haplotype, scales = "free")
 
@@ -85,7 +85,7 @@ unique(df_scatter_perc$haplotype)[1]
 
 ggplot(
   df_scatter_perc,
-  aes(x = ep, y = mhcn, color = as.factor(haplotype))) +
+  aes(x = EpitopePrediction, y = mhcnuggetsr, color = as.factor(haplotype))) +
   geom_abline(slope = 1, intercept = 0, lty = "dashed") +
   geom_point() +
   scale_y_continuous(labels = scales::percent, limits = c(0, 1.0)) +

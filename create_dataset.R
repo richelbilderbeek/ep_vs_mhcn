@@ -19,7 +19,7 @@ if (is_on_ci()) {
 # A tidy tibble
 df <- tibble::as_tibble(
   expand.grid(
-    tool = c("ep", "mhcn"),
+    tool = c("mhcnuggetsr"),
     haplotype = mhc1_haplotypes,
     sequence = bbbq::create_random_peptides(n_peptides = n_peptides, peptide_length = n_aas),
     ic50 = NA,
@@ -28,11 +28,11 @@ df <- tibble::as_tibble(
 )
 n_rows <- nrow(df)
 for (i in seq_len(n_rows)) {
-  df$ic50[i] <- bbbq::predict_ic50s_mhc1(
+  df$ic50[i] <- bbbq::predict_ic50s(
     protein_sequence = df$sequence[i],
-    mhc_1_haplotype = df$haplotype[i],
-    n_aas = n_aas,
-    tool = df$tool[i]
+    peptide_length = n_aas,
+    haplotype = df$haplotype[i],
+    ic50_prediction_tool = df$tool[i]
   )$ic50
 }
 df
