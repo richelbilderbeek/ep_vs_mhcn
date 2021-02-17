@@ -21,7 +21,7 @@ df <- tibble::as_tibble(
   expand.grid(
     tool = c("ep", "mhcn"),
     haplotype = mhc1_haplotypes,
-    sequence = bbbq::create_random_peptides(n_peptides = n_peptides, n_aas = n_aas),
+    sequence = bbbq::create_random_peptides(n_peptides = n_peptides, peptide_length = n_aas),
     ic50 = NA,
     stringsAsFactors = FALSE
   )
