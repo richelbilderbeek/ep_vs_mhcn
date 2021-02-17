@@ -36,7 +36,8 @@ for (i in seq_len(n_rows)) {
     peptide_length = n_aas,
     haplotype = df$haplotype[i],
     ic50_prediction_tool = df$tool[i],
-    mhcnuggetsr_peptides_path = "pasta.fasta"
+    mhcnuggetsr_peptides_path = "pasta.fasta",
+    sink_filename = "prullen.bak"
   )$ic50
 }
 df
