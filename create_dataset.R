@@ -33,10 +33,10 @@ n_rows <- nrow(df)
 for (i in seq_len(n_rows)) {
   df$ic50[i] <- bbbq::predict_ic50s(
     protein_sequence = df$sequence[i],
-    haplotype = df$haplotype[i],
     peptide_length = n_aas,
+    haplotype = df$haplotype[i],
     ic50_prediction_tool = df$tool[i],
-    mhcnuggetsr_peptides_path = "iloverichel.fasta"
+    mhcnuggetsr_peptides_path = "pasta.fasta"
   )$ic50
 }
 df
