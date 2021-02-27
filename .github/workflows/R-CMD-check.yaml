@@ -1,0 +1,86 @@
+# For help debugging build failures open an issue on the RStudio community with the 'github-actions' tag.
+# https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
+on:
+  push:
+  pull_request:
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    strategy:
+      matrix:
+        include:
+          - install_mhcnuggets: "true" 
+          - install_mhcnuggets: "false"
+
+    runs-on: ubuntu-18.04
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+
+      - name: Install libcurl4-openssl-dev
+        run: sudo apt install -qq libcurl4-openssl-dev
+
+      - name: Install libgit2-dev
+        run: sudo apt install -qq libgit2-dev
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes", "rcmdcheck"))
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+          remotes::install_cran("covr")
+          remotes::install_cran("lintr")
+          remotes::install_github("MangoTheCat/goodpractice")
+        shell: Rscript {0}
+
+      - name: Show MHCnuggets
+        env:
+          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
+        run: echo "$INSTALL_MHCNUGGETS"
+
+      - name: If statement on MHCnuggets is true
+        env:
+          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
+        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then echo "Yay!"; fi
+
+      - name: Show location
+        run: pwd
+
+      - name: If statement on MHCnuggets is false
+        env:
+          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
+        run: if [[ "$INSTALL_MHCNUGGETS" == false ]]; then echo "Nay!"; fi
+
+      - name: Show MHCnuggets install script
+        env:
+          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
+        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then cat scripts/install_mhcnuggets.sh; fi
+
+      - name: Install MHCnuggets
+        env:
+          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
+        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then ./scripts/install_mhcnuggets.sh; fi
+
+      - name: Check
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        shell: Rscript {0}
+
+      - name: Test coverage
+        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then Rscript -e 'covr::codecov()'; fi
+
+      - name: Lint
+        run: if [[ "$INSTALL_MHCNUGGETS" == false ]]; then Rscript -e 'lintr::lint_package()'; fi
+
+      - name: Install mhcnuggetsr
+        run: remotes::install_github("richelbilderbeek/mhcnuggetsr")
+        shell: Rscript {0}
+
+      - name: Report
+        run: mhcnuggetsr::mhcnuggetsr_report()
+        shell: Rscript {0}
+
