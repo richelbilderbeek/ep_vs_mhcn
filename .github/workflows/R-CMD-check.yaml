@@ -8,12 +8,6 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    strategy:
-      matrix:
-        include:
-          - install_mhcnuggets: "true" 
-          - install_mhcnuggets: "false"
-
     runs-on: ubuntu-18.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -36,49 +30,15 @@ jobs:
           remotes::install_cran("covr")
           remotes::install_cran("lintr")
           remotes::install_github("MangoTheCat/goodpractice")
+          remotes::install_github("richelbilderbeek/pureseqtmr")
         shell: Rscript {0}
-
-      - name: Show MHCnuggets
-        env:
-          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
-        run: echo "$INSTALL_MHCNUGGETS"
-
-      - name: If statement on MHCnuggets is true
-        env:
-          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
-        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then echo "Yay!"; fi
-
-      - name: Show location
-        run: pwd
-
-      - name: If statement on MHCnuggets is false
-        env:
-          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
-        run: if [[ "$INSTALL_MHCNUGGETS" == false ]]; then echo "Nay!"; fi
-
-      - name: Show MHCnuggets install script
-        env:
-          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
-        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then cat scripts/install_mhcnuggets.sh; fi
 
       - name: Install MHCnuggets
-        env:
-          INSTALL_MHCNUGGETS: ${{ matrix.install_mhcnuggets }}
-        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then ./scripts/install_mhcnuggets.sh; fi
-
-      - name: Check
-        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        run: mhcnuggetsr::install_mhcnuggets()
         shell: Rscript {0}
 
-      - name: Test coverage
-        run: if [[ "$INSTALL_MHCNUGGETS" == true ]]; then Rscript -e 'covr::codecov()'; fi
-
-      - name: Lint
-        run: if [[ "$INSTALL_MHCNUGGETS" == false ]]; then Rscript -e 'lintr::lint_package()'; fi
-
-      - name: Install mhcnuggetsr
-        run: remotes::install_github("richelbilderbeek/mhcnuggetsr")
-        shell: Rscript {0}
+      - name: Make
+        run: make
 
       - name: Report
         run: mhcnuggetsr::mhcnuggetsr_report()
