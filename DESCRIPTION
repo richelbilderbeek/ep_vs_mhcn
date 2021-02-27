@@ -18,6 +18,7 @@ Imports:
     rappdirs,
     reticulate,
     stringr,
+    tidyr,
     tibble
 Suggests: 
     knitr,
