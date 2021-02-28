@@ -1,9 +1,9 @@
 # ep_vs_mhcn
 
-Branch   |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)                                                                             
----------|------------------------------------------------------------------------------------------------------------------------------------------
-`master` |[![Build Status](https://travis-ci.org/richelbilderbeek/ep_vs_mhcn.svg?branch=master)](https://travis-ci.org/richelbilderbeek/ep_vs_mhcn) 
-`develop`|[![Build Status](https://travis-ci.org/richelbilderbeek/ep_vs_mhcn.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/ep_vs_mhcn)
+Branch   |[GitHub Actions](https://github.com/richelbilderbeek/ep_vs_mhcn/actions)                                     
+---------|-------------------------------------------------------------------------------------------------------------
+`master` |![R-CMD-check](https://github.com/richelbilderbeek/ep_vs_mhcn/workflows/R-CMD-check/badge.svg?branch=master) 
+`develop`|![R-CMD-check](https://github.com/richelbilderbeek/ep_vs_mhcn/workflows/R-CMD-check/badge.svg?branch=develop)
 
 Compare the results of EpitopePrediction with those of MHCnuggets.
 

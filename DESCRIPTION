@@ -1,32 +1,32 @@
 Package: epvsmhcn
-Title: EpitopePrediction Versus MHCnuggets
+Title: EpitopePrediction Versus MHCnuggetsr
 Version: 0.1
-Authors@R: 
-    person(given = "Richèl J.C.",
-           family = "Bilderbeek",
-           role = c("aut", "cre"),
-           email = "richel@richelbilderbeek.nl")
+Authors@R: c(
+    person("Richèl J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")),
+    person("Joshua", "van Waardenberg", role = c("ctb")))
+Maintainer: Richèl J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: 
-    The human immune system has MHC class I and class II molecules
-    that bind peptide fragments with different strength.
-    This binding strength is determined by the peptide fragment (i.e.
-    does it fit?) and the type of MHC molecule (aka the haplotype).
-    We can predict the binding strength of a peptide and an MHC molecule
-    of a certain haplotype with software.
-    This package compares the predictions of two such prediction tools:
-    'EpitopePrediction' and 'MHCnuggets'.
+    This GitHub repository compares the results of EpitopePrediction 
+    with those of MHCnuggets.
+    This is not a package.
+    The reason there is a DESCRIPTION file,
+    is because this helps with GitHub Actions.
 License: GPL-3
+Imports:
+    devtools,
+    mhcnuggetsr,
+    rappdirs,
+    reticulate,
+    stringr,
+    tidyr,
+    tibble
+Suggests: 
+    knitr,
+    testthat,
+    rmarkdown
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
-Imports: 
-    dplyr,
-    EpitopePrediction,
-    knitr,
-    ggplot2,
-    mhcnuggetsr (>= 0.11),
-    readr,
-    tidyr
-Suggests: 
-    testthat
-
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Language: en-US
+VignetteBuilder: knitr
