@@ -34,7 +34,7 @@ ggplot(df_scatter, aes(x = EpitopePrediction, y = mhcnuggetsr, color = haplotype
       "Dashed line: x = y. ",
       "Blue line = fit to linear model, should ideally match the dashed line"
     )
-  ) + ggsave("ep_vs_mhcn.png", width = 7, height = 7)
+  ); ggsave("ep_vs_mhcn.png", width = 7, height = 7)
 
 
 ggplot(df_scatter, aes(x = EpitopePrediction, y = mhcnuggetsr, color = haplotype)) +
@@ -50,7 +50,7 @@ ggplot(df_scatter, aes(x = EpitopePrediction, y = mhcnuggetsr, color = haplotype
       "Dashed line: x = y. ",
       "Blue line = fit to linear model, should ideally match the dashed line"
     )
-  ) + ggsave("ep_vs_mhcn_log.png", width = 7, height = 7)
+  ); ggsave("ep_vs_mhcn_log.png", width = 7, height = 7)
 
 
 df_perc <- df %>%
@@ -98,7 +98,7 @@ ggplot(
       "Dashed line: x = y. ",
       "Blue line = fit to linear model, should ideally match the dashed line"
     )
-  ) + ggsave("ep_vs_mhcn_perc.png", width = 7, height = 7)
+  ); ggsave("ep_vs_mhcn_perc.png", width = 7, height = 7)
 
 
 expect_true(file.exists("ep_vs_mhcn.png"))
